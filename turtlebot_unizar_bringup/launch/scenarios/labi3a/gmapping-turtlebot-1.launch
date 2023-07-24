@@ -12,7 +12,7 @@
 
    <group ns="turtlebot_1">
       <param name="tf_prefix" value="$(arg robotName)" />
-      <include file="$(find rtart_launch)/launch/nav_loc/single_robot_gmapping.launch">
+      <include file="$(find turtlebot_unizar_bringup)/launch/single_robot_gmapping.launch">
          <arg name="namespace" value="$(arg robotName)" />
          <arg name="initial_pose_x" value="0.0" />
          <arg name="initial_pose_y" value="0.0" />
