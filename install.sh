@@ -46,7 +46,7 @@ echo "Press enter when done"
 sudo apt install python3-catkin-tools python-is-python3 # This is required for ros-noetic-linux-peripheral-interfaces
 
 # Install turtlebot_unizar dependencies
-sudo apt-get install ros-noetic-sophus ros-noetic-joy libusb-dev ros-noetic-move-base libftdi-dev ros-noetic-base-local-planner ros-noetic-move-base-msgs ros-noetic-linux-peripheral-interfaces ros-noetic-openni2-launch ros-noetic-slam-gmapping
+sudo apt-get install ros-noetic-sophus ros-noetic-joy libusb-dev ros-noetic-move-base libftdi-dev ros-noetic-base-local-planner ros-noetic-move-base-msgs ros-noetic-linux-peripheral-interfaces ros-noetic-openni2-launch ros-noetic-slam-gmapping ros-noetic-map-server ros-noetic-amcl
 
 # Install kobuki unizar
 echo "Installing kobuki packages..."
