@@ -15,14 +15,11 @@
       <param name="frame_id" value="map" />
    </node>
 
-   <group ns="turtlebot_1">
-      <param name="tf_prefix" value="$(arg robotName)" />
-      <include file="$(find turtlebot_unizar_bringup)/launch/single_robot.launch">
-         <arg name="namespace" value="$(arg robotName)" />
-         <arg name="initial_pose_x" value="0.0" />
-         <arg name="initial_pose_y" value="0.0" />
-         <arg name="initial_pose_a" value="0.0" />
-      </include>
-   </group>
+
+   <include file="$(find turtlebot_unizar_bringup)/launch/single_robot.launch">
+      <arg name="initial_pose_x" value="0.0" />
+      <arg name="initial_pose_y" value="0.0" />
+      <arg name="initial_pose_a" value="0.0" />
+   </include>
 </launch>
 

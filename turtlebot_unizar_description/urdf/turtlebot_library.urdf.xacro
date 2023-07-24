@@ -3,14 +3,14 @@
   The complete turtlebot library of xacros for easy reference
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Bases -->
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
   <!-- General -->
   <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_common_library.urdf.xacro"/>
   <!-- Stacks -->
   <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>
   <!-- 3D Sensors DEPRECATED-->
   <!-- <xacro:include filename="$(find turtlebot_description)/urdf/sensors/xtion_pro.urdf.xacro"/> -->
-  <!-- Bases -->
-  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
   <!-- Hokuyo Laser -->
   <xacro:include filename="$(find turtlebot_unizar_description)/urdf/sensors/hokuyo.urdf.xacro"/>
 </robot>

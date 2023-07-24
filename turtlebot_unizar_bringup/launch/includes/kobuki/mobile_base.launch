@@ -12,8 +12,8 @@
 		
 		<param name="tf_prefix" value="robot_0" />
 		<param name="device_port" value="$(arg serialport)" />
-		<param name="odom_frame" value="$(arg namespace)/odom"/>
-		<param name="base_frame" value="$(arg namespace)/base_footprint"/>
+		<param name="odom_frame" value="odom"/>
+		<param name="base_frame" value="base_footprint"/>
 
 		<remap from="mobile_base/odom" to="odom" />
 		<!-- Don't do this - force applications to use a velocity mux for redirection  
