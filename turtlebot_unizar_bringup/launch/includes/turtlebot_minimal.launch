@@ -27,6 +27,7 @@
   </node>
   
   <include file="$(find turtlebot_unizar_bringup)/launch/includes/kobuki/mobile_base.launch">
+    <arg name="base" value="$(arg base)" />
     <arg name="serialport" value="$(arg serialport)" />
     <arg name="namespace" value="$(arg namespace)"/>
   </include>
@@ -35,11 +36,6 @@
     <rosparam command="load" file="$(find turtlebot_bringup)/param/$(arg base)/diagnostics.yaml" />
   </node>
 
-  <include file="$(find turtlebot_unizar_bringup)/launch/includes/mobile_base.launch">
-    <arg name="base" value="$(arg base)" />
-    <arg name="serialport" value="$(arg serialport)" />
-    <arg name="namespace" value="$(arg namespace)"/>
-  </include>
 <!--  <include file="$(find turtlebot_unizar_bringup)/launch/includes/netbook.launch">
     <arg name="battery" value="$(arg battery)" />
   </include>
