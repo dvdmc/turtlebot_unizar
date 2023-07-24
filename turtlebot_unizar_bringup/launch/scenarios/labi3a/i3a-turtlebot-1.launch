@@ -1,0 +1,28 @@
+<launch>
+   <arg name="robotName" default="turtlebot_1" />
+   <arg name="base" default="$(env TURTLEBOT_BASE)" doc="mobile base type [create, roomba]"/>
+   <arg name="stacks" default="$(env TURTLEBOT_STACKS)" doc="stack type displayed in visualisation/simulation [circles, hexagons]"/>
+   <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" doc="3d sensor types [kinect, asux_xtion_pro]"/>
+
+   <include file="$(find turtlebot_bringup)/launch/includes/description.launch.xml">
+      <arg name="base" value="$(arg base)" />
+      <arg name="stacks" value="$(arg stacks)" />
+      <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+   </include>
+
+   <arg name="map_file" default="$(find rtart_launch)/maps/mapI3A.yaml" />
+   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" respawn="false" >
+      <param name="frame_id" value="/map" />
+   </node>
+
+   <group ns="turtlebot_1">
+      <param name="tf_prefix" value="$(arg robotName)" />
+      <include file="$(find rtart_launch)/launch/nav_loc/single_robot.launch">
+         <arg name="namespace" value="$(arg robotName)" />
+         <arg name="initial_pose_x" value="0.0" />
+         <arg name="initial_pose_y" value="0.0" />
+         <arg name="initial_pose_a" value="0.0" />
+      </include>
+   </group>
+</launch>
+

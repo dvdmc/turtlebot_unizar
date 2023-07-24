@@ -1,0 +1,15 @@
+<!-- TODO: What is this for? -->
+<launch>
+   <arg name="robotName" default="turtlebot_1" />
+   <arg name="base" default="$(env TURTLEBOT_BASE)" doc="mobile base type [create, roomba]"/>
+   <arg name="stacks" default="$(env TURTLEBOT_STACKS)" doc="stack type displayed in visualisation/simulation [circles, hexagons]"/>
+   <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" doc="3d sensor types [kinect, asux_xtion_pro]"/>
+
+   <include file="$(find turtlebot_bringup)/launch/includes/description.launch.xml">
+      <arg name="base" value="$(arg base)" />
+      <arg name="stacks" value="$(arg stacks)" />
+      <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+   </include>
+
+</launch>
+
