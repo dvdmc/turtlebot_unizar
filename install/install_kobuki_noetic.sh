@@ -28,7 +28,7 @@ cd ~/tmp_ws/
 
 # Set install directory to /opt/ros/noetic
 catkin config --install --install-space /opt/ros/noetic
-catkin build
+sudo catkin build
 
 # Resource the workspace
 source /opt/ros/noetic/setup.bash
@@ -37,3 +37,9 @@ rosrun kobuki_ftdi create_udev_rules
 
 # Return to previous dir
 cd "$current_dir"
+
+# Remove tmp_ws
+sudo rm -rf ~/tmp_ws
+
+# Resource the workspace
+source /opt/ros/noetic/setup.bash

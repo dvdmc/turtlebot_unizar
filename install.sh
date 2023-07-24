@@ -54,7 +54,7 @@ sudo ./install/install_kobuki_noetic.sh
 
 # Install turtlebot2 packages
 echo "Installing turtlebot2 packages..."
-sudo apt install ros-noetic-turtlebot ros-noetic-turtlebot-apps ros-noetic-turtlebot-interactions ros-noetic-turtlebot-simulator ros-noetic-kobuki-ftdi ros-noetic-ar-track-alvar-msgs
+sudo ./install/install_turtlebot2_noetic.sh
 
 # Installing HOKUYO laser
 echo "Installing HOKUYO laser..."

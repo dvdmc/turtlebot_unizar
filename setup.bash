@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This file sets up certain enrionment variables without installing anything
 echo "Configuring robot..."
 
@@ -34,3 +36,6 @@ fi
 echo "export TURTLEBOT_BASE=$base" >> ~/.bashrc
 echo "export TURTLEBOT_STACKS=$stack" >> ~/.bashrc
 echo "export TURTLEBOT_3D_SENSOR=$sensor" >> ~/.bashrc
+
+# Resource the bash
+source ~/.bashrc
