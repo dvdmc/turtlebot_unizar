@@ -11,7 +11,7 @@
   <!-- Stacks -->
   <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>
   <!-- 3D Sensors DEPRECATED-->
-  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/xtion_pro.urdf.xacro"/>
   <!-- Hokuyo Laser -->
   <xacro:include filename="$(find turtlebot_unizar_description)/urdf/sensors/hokuyo.urdf.xacro"/>
 </robot>

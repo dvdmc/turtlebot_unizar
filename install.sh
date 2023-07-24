@@ -49,15 +49,18 @@ sudo apt install python3-catkin-tools python-is-python3 # This is required for r
 sudo apt-get install ros-noetic-sophus ros-noetic-joy libusb-dev ros-noetic-move-base libftdi-dev ros-noetic-base-local-planner ros-noetic-move-base-msgs ros-noetic-linux-peripheral-interfaces ros-noetic-openni2-launch ros-noetic-slam-gmapping
 
 # Install kobuki unizar
-echo "Installing kobuki unizar..."
+echo "Installing kobuki packages..."
+wait 5
 sudo ./install/install_kobuki_noetic.sh
 
 # Install turtlebot2 packages
 echo "Installing turtlebot2 packages..."
+wait 5
 sudo ./install/install_turtlebot2_noetic.sh
 
 # Installing HOKUYO laser
 echo "Installing HOKUYO laser..."
+wait 5
 sudo ./install/install_hokuyo_noetic.sh
 
 # Copy the file ./install/entrypoint.md to home directory
