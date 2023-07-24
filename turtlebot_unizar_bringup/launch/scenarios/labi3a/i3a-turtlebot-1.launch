@@ -12,7 +12,7 @@
 
    <arg name="map_file" default="$(find turtlebot_unizar_bringup)/maps/mapI3A.yaml" />
    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" respawn="false" >
-      <param name="frame_id" value="/map" />
+      <param name="frame_id" value="map" />
    </node>
 
    <group ns="turtlebot_1">

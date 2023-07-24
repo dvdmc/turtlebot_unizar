@@ -39,7 +39,7 @@
       <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
       <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
       <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
-      <arg name="global_frame_id" value="/map"/>
+      <arg name="global_frame_id" value="map"/>
    </include>
 
 
@@ -47,7 +47,7 @@
    <arg name="custom_move_base_launch_file" default="$(find turtlebot_unizar_bringup)/launch/includes/move_base.launch.xml"/>
    <arg name="custom_move_base_param_file" default="$(find turtlebot_unizar_bringup)/param/move_base_config/dummy.yaml"/>
    <include file="$(arg custom_move_base_launch_file)">
-      <arg name="global_frame_id" value="/map"/>
+      <arg name="global_frame_id" value="map"/>
       <arg name="tf_prefix" value="$(arg namespace)"/>
       <arg name="custom_param_file" value="$(arg custom_move_base_param_file)"/>
    </include>
