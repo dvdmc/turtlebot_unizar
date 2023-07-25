@@ -10,4 +10,5 @@
   <xacro:kobuki/>
   <xacro:stack_hexagons                 parent="base_link"/>
   <xacro:sensor_hokuyo          	      parent="plate_top_link"/>
+  <xacro:sensor_d435i                   parent="plate_top_link"/>
 </robot>
