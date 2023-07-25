@@ -43,7 +43,7 @@ echo "IP: $(hostname -I)"
 echo "Press enter when done"
 
 # Install catkin tools
-sudo apt install python3-catkin-tools python-is-python3 # This is required for ros-noetic-linux-peripheral-interfaces
+sudo apt-get install python3-rosdep python3-catkin-tools python-is-python3 # The last is required for ros-noetic-linux-peripheral-interfaces
 
 # Install turtlebot_unizar dependencies
 
