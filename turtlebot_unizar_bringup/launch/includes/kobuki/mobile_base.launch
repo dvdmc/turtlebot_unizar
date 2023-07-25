@@ -4,13 +4,11 @@
 	<arg name="namespace"/>
 
 	<node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager">
-		<param name="tf_prefix" value="robot_0" />
 	</node>
 
 	<node pkg="nodelet" type="nodelet" name="mobile_base" args="load kobuki_node/KobukiNodelet mobile_base_nodelet_manager">
 		<rosparam file="$(find turtlebot_unizar_bringup)/param/kobuki/base.yaml" command="load" />
 		
-		<param name="tf_prefix" value="robot_0" />
 		<param name="device_port" value="$(arg serialport)" />
 		<param name="odom_frame" value="odom"/>
 		<param name="base_frame" value="base_footprint"/>
