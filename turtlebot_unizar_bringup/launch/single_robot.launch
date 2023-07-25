@@ -50,7 +50,7 @@
       <arg name="custom_param_file" value="$(arg custom_move_base_param_file)"/>
    </include>
 
-
-
+   <!-- Realsense -->
+   <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
 
 </launch>

@@ -27,7 +27,7 @@ else
     echo "ROS is not installed. Do you want to install it? (y/n)"
     read -r install_ros
     if [ "$install_ros" = "y" ]; then
-        sudo ./install/ros_install.sh
+        sudo . ./install/ros_install.sh
     else
         echo "ROS installation skipped"
     fi
@@ -46,22 +46,36 @@ echo "Press enter when done"
 sudo apt install python3-catkin-tools python-is-python3 # This is required for ros-noetic-linux-peripheral-interfaces
 
 # Install turtlebot_unizar dependencies
-sudo apt-get install ros-noetic-sophus ros-noetic-joy libusb-dev ros-noetic-move-base libftdi-dev ros-noetic-base-local-planner ros-noetic-move-base-msgs ros-noetic-linux-peripheral-interfaces ros-noetic-openni2-launch ros-noetic-slam-gmapping ros-noetic-map-server ros-noetic-amcl ros-noetic-navigation
+
+    # Mainly related to kobuki
+sudo apt-get install -y ros-$ROS_DISTRO-sophus ros-$ROS_DISTRO-joy libusb-dev  libftdi-dev ros-$ROS_DISTRO-openni2-launch ros-$ROS_DISTRO-linux-peripheral-interfaces
+
+    # Mainly related to turtlebot2 and navigation
+sudo apt-get install -y ros-$ROS_DISTRO-move-base ros-$ROS_DISTRO-base-local-planner ros-$ROS_DISTRO-move-base-msgs ros-$ROS_DISTRO-navigation
+
+    # Mainly related to scan mapping
+sudo apt-get install -y ros-$ROS_DISTRO-slam-gmapping ros-$ROS_DISTRO-map-server ros-$ROS_DISTRO-amcl
 
 # Install kobuki unizar
 echo "Installing kobuki packages..."
 wait 5
-sudo ./install/install_kobuki_noetic.sh
+sudo . ./install/install_kobuki_noetic.sh
 
 # Install turtlebot2 packages
 echo "Installing turtlebot2 packages..."
 wait 5
-sudo ./install/install_turtlebot2_noetic.sh
+sudo . ./install/install_turtlebot2_noetic.sh
 
 # Installing HOKUYO laser
 echo "Installing HOKUYO laser..."
 wait 5
-sudo ./install/install_hokuyo_noetic.sh
+sudo . ./install/install_hokuyo_noetic.sh
+
+# Installing realsense camera
+echo "Installing realsense camera..."
+wait 5
+sudo apt-get install -y ros-$ROS_DISTRO-realsense2-camera ros-$ROS_DISTRO-realsense2-description
+
 
 # Copy the file ./install/entrypoint.md to home directory
 echo "There is an entrypoint file in the home directory for help :-)"
