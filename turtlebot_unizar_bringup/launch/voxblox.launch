@@ -5,7 +5,7 @@
       <remap from="voxblox_node/esdf_map_out" to="esdf_map" />
       <remap from="voxblox_node/tsdf_map_out" to="tsdf_map" />
 
-      <remap from="pointcloud" to="/camera/point_cloud"/>
+      <remap from="pointcloud" to="/camera/depth/color/points"/>
 
       <param name="use_tf_transforms"        value="true"/>
       <param name="world_frame"              value="map"/>
