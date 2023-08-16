@@ -10,4 +10,8 @@
   <xacro:kobuki/>
   <xacro:stack_hexagons                 parent="base_link"/>
   <xacro:sensor_hokuyo          	      parent="plate_top_link"/>
+  <xacro:gimbal                         parent="plate_top_link"/>
+  <xacro:sensor_d435i                   parent="camera_mount_gimbal_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:sensor_d435i>
 </robot>

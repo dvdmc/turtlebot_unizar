@@ -13,4 +13,8 @@
   <!-- <xacro:include filename="$(find turtlebot_description)/urdf/sensors/xtion_pro.urdf.xacro"/> -->
   <!-- Hokuyo Laser -->
   <xacro:include filename="$(find turtlebot_unizar_description)/urdf/sensors/hokuyo.urdf.xacro"/>
+  <!-- Gimbal -->
+  <xacro:include filename="$(find turtlebot_unizar_description)/urdf/sensors/gimbal.urdf.xacro"/>
+  <!-- Realsense -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
 </robot>
