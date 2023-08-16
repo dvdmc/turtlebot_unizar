@@ -18,5 +18,5 @@ export ROS_IP=$(hostname -I | cut -d' ' -f1)
 
 - On the remote PC:
 
-export ROS_MASTER_URI= #CHECK ROBOT IP WITH "hostname -I" ON ROBOT TERMINAL
+export ROS_MASTER_URI= http://(#CHECK ROBOT IP WITH "hostname -I" ON ROBOT TERMINAL):11311
 export ROS_IP= #CHECK REMOTE PC IP WITH "hostname -I" ON REMOTE PC TERMINAL
