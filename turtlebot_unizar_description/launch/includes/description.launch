@@ -2,6 +2,7 @@
   Robot description only (used in private and paired master).
  -->
 <launch>
+  <!-- TODO: Define the classification parameters of our robots (maybe crete names?)-->
   <arg name="base"/>
   <arg name="stacks"/>
   <arg name="sensor"/>

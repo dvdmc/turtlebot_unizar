@@ -11,12 +11,6 @@
 
   <param name="/use_sim_time" value="$(arg simulation)"/>
 
-  <include file="$(find turtlebot_unizar_description)/launch/includes/description.launch.xml">
-    <arg name="base" value="$(arg base)" />
-    <arg name="stacks" value="$(arg stacks)" />
-    <arg name="3d_sensor" value="$(arg 3d_sensor)" />
-  </include>
-
   <!-- important generally, but specifically utilised by the current app manager TODO: What is this? -->  
   <param name="robot/name" value="$(optenv ROBOT turtlebot)"/>
   <param name="robot/type" value="turtlebot"/>

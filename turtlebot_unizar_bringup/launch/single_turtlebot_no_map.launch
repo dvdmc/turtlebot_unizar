@@ -14,10 +14,9 @@
 	<remap from="/base_pose_ground_truth" to="/turtlebot_1/odom"/>
       <param name="odom_frame_id" value="turtlebot_1/odom" />
       <param name="global_frame_id" value="map" />
-
    </node>
 
-<node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map turtlebot_1/odom 100" />
+   <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map turtlebot_1/odom 100" />
 
    <group ns="turtlebot_1">
       <param name="tf_prefix" value="$(arg robotName)" />
@@ -29,4 +28,3 @@
       </include>
    </group>
 </launch>
-
