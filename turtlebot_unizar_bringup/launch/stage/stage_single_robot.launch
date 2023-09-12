@@ -1,0 +1,51 @@
+<launch>
+
+<!-- TO-DO: Make it more parametric and customizable-->
+<!-- TO-DO: Create configuration files for each node/launch file-->
+
+   <param name="/use_sim_time" value="true"/> 
+
+   <!-- Map filepath-->
+   <arg name="map_path" default="$(find turtlebot_unizar_bringup)/maps/mapI3A" />
+
+   <!-- Topics and TF IDs-->
+   <arg name="map_frame" default="map" />
+   <arg name="base_frame" default="base_footprint" />
+   <arg name="odom_frame" default="odom" />
+
+   <arg name="laser_topic" default="base_scan" />
+   <arg name="odom_topic" default="odom" />
+   <arg name="map_topic" default="map" />
+
+   <!-- Move base config files-->
+   <arg name="custom_move_base_launch_file" default="$(find turtlebot_unizar_bringup)/launch/includes/move_base.launch.xml"/>
+   <arg name="custom_move_base_param_file" default="$(find turtlebot_unizar_bringup)/param/move_base_config/dummy.yaml"/>
+
+
+   <!-- STAGE Node -->    
+   <node name="stage_ros" pkg="stage_ros" type="stageros" args="$(arg map_path).world"/>
+
+   <!-- ROBOT_MODEL -->
+   <!-- Convert xacro and put on parameter server -->
+   <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot_unizar_description)/robots/kobuki_hexagons_hokuyo_top.urdf.xacro" />
+
+   <!-- Move base -->
+   <include file="$(arg custom_move_base_launch_file)">
+      <arg name="custom_param_file" value="$(arg custom_move_base_param_file)"/>
+      <arg name="laser_topic" value="$(arg laser_topic)" />
+      <arg name="odom_topic" value="$(arg odom_topic)" />
+      <arg name="map_topic" value="$(arg map_topic)" />
+      <arg name="odom_frame_id" value ="$(arg odom_frame)" />
+      <arg name="base_frame_id" value ="$(arg base_frame)" />
+      <arg name="global_frame_id" value="$(arg map_frame)"/>
+   </include>
+
+   <!--  RVIZ  -->
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_unizar_bringup)/cfg/turtlebot_unizar.rviz"/>
+
+</launch>
+
+
+
+
+

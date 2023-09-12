@@ -1,0 +1,70 @@
+<launch>
+   <arg name="robotName" default="turtlebot_1" />
+   <arg name="base" default="$(optenv TURTLEBOT_BASE kobuki)" />  <!-- create, rhoomba -->
+   <arg name="stacks" default="$(optenv TURTLEBOT_STACKS hexagons)" />  <!-- circles, hexagons -->
+   <arg name="3d_sensor" default="$(optenv TURTLEBOT_3D_SENSOR hokuyo_top)" />  <!-- kinect, asus_xtion_pro -->
+ 
+   <!--<arg name="central_master_name" default="172.31.0.102"/> -->
+   <!-- <param name="/use_sim_time" value="true" /> -->
+
+   <!-- ROBOT_MODEL -->
+   <include file="$(find turtlebot_unizar_description)/launch/includes/description.launch">
+      <arg name="base" value="$(arg base)" />
+      <arg name="stacks" value="$(arg stacks)" />
+      <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+   </include>
+
+   <arg name="initial_pose_x" default="0.0"/>
+   <arg name="initial_pose_y" default="0.0"/>
+   <arg name="initial_pose_a" default="0.0"/>
+
+   <!-- Kobuki Base -->
+   <include file="$(find turtlebot_unizar_bringup)/launch/includes/turtlebot_minimal.launch">
+      <arg name="base" value="$(arg base)" />
+      <arg name="stacks" value="$(arg stacks)" />
+      <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+   </include>
+
+   <!-- Hokuyo LiDar sensor -->
+   <node name="laser_driver" pkg="urg_node" type="urg_node">
+      <param name="ip_address" value=""/>
+      <param name="serial_port" value="/dev/ttyACM0"/>
+      <param name="serial_baud" value="115200"/>
+      <param name="frame_id" value="base_laser_link"/>
+      <param name="calibrate_time" value="true"/>
+      <param name="angle_min" value="-1.5707963"/>
+      <param name="angle_max" value="1.5707963"/>
+   </node>
+
+   <!-- Map server -->
+   <arg name="map_file" default="$(find turtlebot_unizar_bringup)/maps/mapI3A.yaml" />
+   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" respawn="false" >
+      <param name="frame_id" value="map" />
+   </node>
+
+   <!-- AMCL -->
+   <arg name="custom_amcl_launch_file" default="$(find turtlebot_unizar_bringup)/launch/includes/amcl/$(arg 3d_sensor)_amcl.launch.xml"/>   
+   <include file="$(arg custom_amcl_launch_file)">
+      <arg name="scan_topic" value="/scan" />
+      <arg name="use_map_topic" value="true" />
+      <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+      <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+      <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+      <arg name="global_frame_id" value="map"/>
+   </include>
+
+
+   <!-- Move base -->
+   <arg name="custom_move_base_launch_file" default="$(find turtlebot_unizar_bringup)/launch/includes/move_base.launch.xml"/>
+   <arg name="custom_move_base_param_file" default="$(find turtlebot_unizar_bringup)/param/move_base_config/dummy.yaml"/>
+   <include file="$(arg custom_move_base_launch_file)">
+      <arg name="global_frame_id" value="map"/>
+      <arg name="custom_param_file" value="$(arg custom_move_base_param_file)"/>
+   </include>
+
+   <!-- Realsense -->
+   <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+      <arg name="filters" value="pointcloud"/>
+   </include>
+
+</launch>

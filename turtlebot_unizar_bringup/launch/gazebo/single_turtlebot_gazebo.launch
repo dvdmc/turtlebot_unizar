@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<param name="/use_sim_time" value="true"/> 
+   <arg name="initial_pose_x" default="6.0"/>
+   <arg name="initial_pose_y" default="3.5"/>
+   <arg name="initial_pose_a" default="0.0"/>
+
+   <arg name="robotName" default="turtlebot_1" />
+   <arg name="base" default="$(optenv TURTLEBOT_BASE kobuki)" />  <!-- create, rhoomba -->
+   <arg name="stacks" default="$(optenv TURTLEBOT_STACKS hexagons)" />  <!-- circles, hexagons -->
+   <arg name="3d_sensor" default="$(optenv TURTLEBOT_3D_SENSOR hokuyo_top)" />  <!-- kinect, asus_xtion_pro -->
+ 
+   <!--<arg name="central_master_name" default="172.31.0.102"/> -->
+   <!-- <param name="/use_sim_time" value="true" /> -->
+
+  <!-- GAZEBO -->    
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/shapes.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/> <!-- Inert - see gazebo_ros_pkgs issue #491 -->
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+  <!-- ROBOT_MODEL -->
+  <!-- Convert xacro and put on parameter server -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot_unizar_description)/robots/kobuki_hexagons_hokuyo_top.urdf.xacro" />
+  <!-- Spawn a robot into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x 10 -y 10 -z 1 -model turtlebot" />
+  
+
+</launch>
