@@ -1,8 +1,5 @@
 <launch>
 
-<!-- TO-DO: Make it more parametric and customizable-->
-<!-- TO-DO: Create configuration files for each node/launch file-->
-
    <param name="/use_sim_time" value="true"/> 
 
    <!-- Map filepath-->
@@ -27,8 +24,16 @@
 
    <!-- ROBOT_MODEL -->
    <!-- Convert xacro and put on parameter server -->
-   <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot_unizar_description)/robots/kobuki_hexagons_hokuyo_top.urdf.xacro" />
+   <!-- <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot_unizar_description)/robots/kobuki_hexagons_hokuyo_top.urdf.xacro" /> -->
+   <param name="robot_description" command="$(find xacro)/xacro $(find husky_description)/urdf/husky.urdf.xacro" />
+   
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="5.0" />
+   </node>
 
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+   </node>
+   
    <!-- Move base -->
    <include file="$(arg custom_move_base_launch_file)">
       <arg name="custom_param_file" value="$(arg custom_move_base_param_file)"/>
@@ -41,7 +46,7 @@
    </include>
 
    <!--  RVIZ  -->
-   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_unizar_bringup)/cfg/turtlebot_unizar.rviz"/>
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_unizar_bringup)/cfg/turtlebot_unizar_stage.rviz"/>
 
 </launch>
 
