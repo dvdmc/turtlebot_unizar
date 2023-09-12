@@ -27,6 +27,7 @@
    <!-- <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot_unizar_description)/robots/kobuki_hexagons_hokuyo_top.urdf.xacro" /> -->
    <param name="robot_description" command="$(find xacro)/xacro $(find husky_description)/urdf/husky.urdf.xacro" />
    
+   <!-- To allow Rviz show the whole 3D model -->
    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="5.0" />
    </node>
