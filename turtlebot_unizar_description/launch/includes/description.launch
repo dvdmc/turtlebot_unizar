@@ -5,9 +5,9 @@
   <!-- TODO: Define the classification parameters of our robots (maybe crete names?)-->
   <arg name="base"/>
   <arg name="stacks"/>
-  <arg name="sensor"/>
+  <arg name="3d_sensor"/>
   
-  <arg name="urdf_file" default="$(find xacro)/xacro '$(find turtlebot_unizar_description)/robots/$(arg base)_$(arg stacks)_$(arg sensor).urdf.xacro'" />
+  <arg name="urdf_file" default="$(find xacro)/xacro '$(find turtlebot_unizar_description)/robots/$(arg base)_$(arg stacks)_$(arg 3d_sensor).urdf.xacro'" />
   <param name="robot_description" command="$(arg urdf_file)" />
 
 </launch>
