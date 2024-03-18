@@ -4,7 +4,7 @@ This repository is intended to deploy software into turtlebot's from the RoPeRT 
 
 ## Requirements
 
-This system was tested on Turtlebots' and ground station computers running ROS Melodic and Ubuntu 20.04.
+This system was tested on Turtlebots' and ground station computers running ROS Melodic and Ubuntu 20.04. The installtion script will take care of ROS installation if it is not installed.
 
 ## Install
 
@@ -36,7 +36,17 @@ If you want to reconfigure some settings without reinstalling anything you can c
 
 ## Usage
 
-Aside from useful configuration files, this repository includes modules for navigation, mapping and perception. You can check the specific modules in 'turtlebot_unizar_bringup'.
+Aside from useful configuration files, this repository includes modules for navigation, mapping and perception. You can check the specific modules in 'turtlebot_unizar_bringup'. Make sure in any case that the loaded _xacro_ file is correct for your Turtlebot setup.
+
+
+> **Important:**
+Before running any application involving the Hokuyo Lidar, make sure the _xacro_ model for the robot is correct. 
+This position is defined in the 'turtlebot_unizar_description` package under _robots/_ files.
+The laser is assigned a parent in the Turtlebot's default structure.
+If your laser is monted on a different plate, frame, support..., make sure to modify the _urdf/sensors/hokuyo.urdf.xacro_ file to resemble your setup.
+
+> If your robot does not include a camera, you can remove it from the _robots/_ file that you want to use.
+
 
 ### Reactive navigation
 
