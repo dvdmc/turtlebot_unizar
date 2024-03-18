@@ -44,7 +44,7 @@ else
 fi
 
 # Install basic programs: git, vim, tmux, htop, net-tools, openssh-server
-sudo apt install git vim tmux htop net-tools openssh-server
+sudo apt install git vim tmux htop net-tools openssh-server tmux
 
 
 # Install catkin tools
