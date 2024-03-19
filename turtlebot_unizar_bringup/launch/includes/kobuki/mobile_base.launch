@@ -1,6 +1,6 @@
 <!-- Kobuki's implementation of turtlebot's mobile base. -->
 <launch>
-	<arg name="serialport" /> <!-- TODO: use the serialport parameter to set the serial port of kobuki -->
+	<!-- <arg name="serialport" /> TODO: use the serialport parameter to set the serial port of kobuki -->
 	<arg name="namespace"/>
 
 	<node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager">
@@ -9,7 +9,7 @@
 	<node pkg="nodelet" type="nodelet" name="mobile_base" args="load kobuki_node/KobukiNodelet mobile_base_nodelet_manager">
 		<rosparam file="$(find turtlebot_unizar_bringup)/param/kobuki/base.yaml" command="load" />
 		
-		<param name="device_port" value="$(arg serialport)" />
+		<!-- <param name="device_port" value="$(arg serialport)" /> -->
 		<param name="odom_frame" value="odom"/>
 		<param name="base_frame" value="base_footprint"/>
 

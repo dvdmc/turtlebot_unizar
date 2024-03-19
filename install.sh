@@ -134,6 +134,16 @@ if computer_type="robot"; then
         if [ "$sensor" = "" ]; then
             sensor="hokuyo_top"
         fi
+        printf "${YELLOW}Please, enter the robot name (default: robot1): ${NC}"
+        read -r robot_name
+        if [ "$robot_name" = "" ]; then
+            robot_name="robot1"
+        fi
+        printf "${YELLOW}Please, enter the 3d sensor (default: hokuyo_top): ${NC}"
+        read -r sensor
+        if [ "$sensor" = "" ]; then
+            sensor="hokuyo_top"
+        fi
 
         # Include the optenv variables in .bashrc
         echo "export TURTLEBOT_BASE=$base" >> ~/.bashrc

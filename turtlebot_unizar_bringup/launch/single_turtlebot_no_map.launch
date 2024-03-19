@@ -4,7 +4,7 @@
    <arg name="stacks" default="$(env TURTLEBOT_STACKS)" doc="stack type displayed in visualisation/simulation [circles, hexagons]"/>
    <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" doc="3d sensor types [kinect, asux_xtion_pro]"/>
 
-   <include file="$(find turtlebot_bringup)/launch/includes/description.launch.xml">
+   <include file="$(find turtlebot_bringup)/launch/includes/description.launch">
       <arg name="base" value="$(arg base)" />
       <arg name="stacks" value="$(arg stacks)" />
       <arg name="3d_sensor" value="$(arg 3d_sensor)" />
